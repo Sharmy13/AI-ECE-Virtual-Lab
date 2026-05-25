@@ -1,4 +1,4 @@
-import Assistant from "./Assistant";
+import Assistant from "./assistant";
 
 function VirtualLab() {
 
