@@ -2,32 +2,55 @@ const express = require("express");
 const cors = require("cors");
 require("dotenv").config();
 
-const { GoogleGenerativeAI } = require("@google/generative-ai");
+const { GoogleGenerativeAI } =
+  require("@google/generative-ai");
 
 const app = express();
 
 app.use(cors());
 app.use(express.json());
 
+// GEMINI SETUP
+
 const genAI = new GoogleGenerativeAI(
   process.env.GEMINI_API_KEY
 );
 
+// TEST ROUTE
+
 app.get("/", (req, res) => {
+
   res.send("Backend Running");
 });
+
+// AI ROUTE
 
 app.post("/ask-ai", async (req, res) => {
 
   try {
 
+    console.log("BODY:");
+    console.log(req.body);
+
     const { question } = req.body;
 
-    console.log(question);
+    // CHECK QUESTION
 
-    const model = genAI.getGenerativeModel({
-      model: "gemini-flash-latest"
-    });
+    if (!question) {
+
+      return res.status(400).json({
+        error: "Question is required",
+      });
+    }
+
+    // MODEL
+
+    const model =
+      genAI.getGenerativeModel({
+        model: "gemini-1.5-flash",
+      });
+
+    // PROMPT
 
     const prompt = `
 You are an AI Electronics Lab Assistant.
@@ -41,34 +64,48 @@ Help students understand:
 - communication systems
 - digital electronics
 
-Do NOT give very short answers.
-Explain clearly in educational style.
+Explain clearly in simple educational style.
 
 Student Question:
 ${question}
 `;
 
-const result =
-  await model.generateContent(prompt);
-    const response = await result.response;
+    // GEMINI RESPONSE
 
-    const text = response.text();
+    const result =
+      await model.generateContent(prompt);
+
+    const response =
+      await result.response;
+
+    const text =
+      response.text();
+
+    // SEND RESPONSE
 
     res.json({
-      reply: text
+      reply: text,
     });
 
   } catch (error) {
 
-    console.log("ERROR:");
+    console.log("FULL ERROR:");
     console.log(error);
 
     res.status(500).json({
-      error: "Gemini failed"
+      error: error.message,
     });
   }
 });
 
-app.listen(8080, () => {
-  console.log("Server running on 8080");
+// SERVER
+
+const PORT =
+  process.env.PORT || 8080;
+
+app.listen(PORT, () => {
+
+  console.log(
+    `Server running on port ${PORT}`
+  );
 });
