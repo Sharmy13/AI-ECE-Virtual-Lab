@@ -1,10 +1,10 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import Home from "./pages/Home.jsx";
-import VirtualLab from "./pages/VirtualLab.jsx";
-import Assistant from "./pages/Assistant.jsx";
+import Home from "./pages/home.jsx";
+import VirtualLab from "./pages/virtuallab.jsx";
+import Assistant from "./pages/assistant.jsx";
 
-import Navbar from "./components/Navbar.jsx";
+import Navbar from "./components/navbar.jsx";
 
 function App() {
 
