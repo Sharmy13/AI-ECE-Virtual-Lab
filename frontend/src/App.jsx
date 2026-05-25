@@ -1,20 +1,39 @@
-import { Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Home from "./pages/Home";
-import Assistant from "./pages/Assistant";
-import Navbar from "./components/Navbar";
 import VirtualLab from "./pages/VirtualLab";
+import Assistant from "./pages/Assistant";
+
+import Navbar from "./components/Navbar";
+
 function App() {
+
   return (
-    <div className="min-h-screen bg-gray-950 text-white">
+
+    <BrowserRouter>
+
       <Navbar />
 
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/assistant" element={<Assistant />} />
-        <Route path="/lab" element={<VirtualLab />} />
+
+        <Route
+          path="/"
+          element={<Home />}
+        />
+
+        <Route
+          path="/lab"
+          element={<VirtualLab />}
+        />
+
+        <Route
+          path="/assistant"
+          element={<Assistant />}
+        />
+
       </Routes>
-    </div>
+
+    </BrowserRouter>
   );
 }
 
