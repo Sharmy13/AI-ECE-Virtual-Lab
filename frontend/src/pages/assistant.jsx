@@ -55,7 +55,7 @@ ${question}
     try {
 
       const response = await axios.post(
-        "http://localhost:8080/ask-ai",
+        "https://ai-ece-virtual-lab.onrender.com/ask-ai",
         {
           question: `
 Generate a professional electronics lab report for:
@@ -90,7 +90,7 @@ Include:
     try {
 
       const response = await axios.post(
-        "http://localhost:8080/ask-ai",
+        "https://ai-ece-virtual-lab.onrender.com/ask-ai",
         {
           question: `
 Generate 10 viva questions with answers for:
