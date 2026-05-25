@@ -28,7 +28,7 @@ function Assistant() {
     try {
 
       const response = await axios.post(
-        "http://localhost:8080/ask-ai",
+        "https://ai-ece-virtual-lab.onrender.com/ask-ai",
         {
           question: `
 Current Lab Context:
