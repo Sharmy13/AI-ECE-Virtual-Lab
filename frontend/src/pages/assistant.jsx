@@ -45,6 +45,10 @@ ${question}
     } catch (error) {
 
       console.log(error);
+
+      setAnswer(
+        "AI quota limit reached. Please try again later."
+      );
     }
   };
 
@@ -80,6 +84,10 @@ Include:
     } catch (error) {
 
       console.log(error);
+
+      setReport(
+        "AI quota limit reached. Please try again later."
+      );
     }
   };
 
@@ -107,6 +115,10 @@ Keep answers simple and educational.
     } catch (error) {
 
       console.log(error);
+
+      setViva(
+        "AI quota limit reached. Please try again later."
+      );
     }
   };
 
