@@ -3,7 +3,6 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/home.jsx";
 import VirtualLab from "./pages/Virtuallab.jsx";
 import Assistant from "./pages/assistant.jsx";
-
 import Navbar from "./components/navbar.jsx";
 
 function App() {
